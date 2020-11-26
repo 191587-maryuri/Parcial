@@ -1,0 +1,12 @@
+<div class="cuerpo" *ngFor="let item of receta.recetas">
+    <div class="contenido">
+      <h1>{{item.titulo}}</h1><br>
+      <img class="imagen" src="{{item.imagen}}" alt=""><br><br>
+      <p>{{item.contenido}}</p>
+      <h2>{{ item.subtitulo | uppercase }}</h2>
+      <p>{{item.contenido2}}</p>
+      <p>{{item.contenido3}}</p>
+    </div>
+    <br>
+</div>
+
