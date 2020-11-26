@@ -1,2 +1,55 @@
-<p>Ideología Cocimania
-  Para nosotros la gastronomía es un arte muy completo, trata todos los aspectos del ser humano, físico, psíquico y espiritual. Comer es un viaje a través de los sentidos y si ponemos atención a cada uno de los detalles, una comida se puede transformar en una experiencia fascinante, da igual si es una tostada en casa o una cena en un restaurante. Comer puede cambiar nuestro estado de ánimo. Después de cada buena comida nos invade una sensación de felicidad, y como dice uno de nuestros seguidores:” con el estómago lleno, la vida tiene otro color”.</p>
+<div class="cuerpo">
+  <div class="contenido">
+  <h1>Sobre Nosotros</h1>
+  <p>Para nosotros la gastronomía es un arte muy completo, trata todos los aspectos del ser humano, físico, psíquico y espiritual. Comer es un viaje a través de los sentidos y si ponemos atención a cada uno de los detalles,
+    una comida se puede transformar en una experiencia fascinante, da igual si es una tostada en casa o una cena en un restaurante. Comer puede cambiar nuestro estado de ánimo. Después de cada buena comida nos invade una
+    sensación de felicidad, y como dice uno de nuestros seguidores:” con el estómago lleno, la vida tiene otro color”.</p>
+  <br>
+  <h2>Contactanos</h2>
+  <div class="formulario">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Nombre</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+          <input nz-input formControlName="userName" placeholder="Escribe tu nombre" />
+          <ng-template #userErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Porfavor ingresa tu nombre
+            </ng-container>
+            <ng-container *ngIf="control.hasError('duplicated')">
+              The username is redundant!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>E-mail</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-input formControlName="email" placeholder="Correo" type="email" />
+          <ng-template #emailErrorTpl let-control>
+            <ng-container *ngIf="control.hasError('email')">
+              Correo invalido!
+            </ng-container>
+            <ng-container *ngIf="control.hasError('required')">
+              No has ingresado tu correo!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Mensaje</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Porfavor escribe algo!">
+          <textarea formControlName="comment" nz-input rows="2" placeholder="Escribe tu mensaje.."></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <button nz-button nzType="primary" [disabled]="!validateForm.valid">Enviar</button>
+          <button nz-button (click)="resetForm($event)">Reiniciar</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  </div>
+</div>
+
